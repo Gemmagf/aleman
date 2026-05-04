@@ -45,7 +45,23 @@ npm run dev
 
 Obre [http://localhost:3000](http://localhost:3000).
 
-### 5. Deploy a Vercel
+### 5. Deploy
+
+#### Opció A — GitHub Pages (només la `/demo`)
+
+Hi ha un workflow [`.github/workflows/pages.yml`](.github/workflows/pages.yml) que:
+1. Esborra les rutes que necessiten servidor (api, auth, today, etc.)
+2. Construeix amb `EXPORT=1` (output: `export`) i `basePath=/aleman`
+3. Publica `out/` a GitHub Pages
+
+Per activar-ho:
+1. Vés a *Settings → Pages* del repo
+2. **Source**: GitHub Actions
+3. Empeny a `main` o executa el workflow manualment des de la pestanya *Actions*
+
+L'app quedarà a `https://<usuari>.github.io/aleman/demo/`. El test, login, today, etc. **no funcionen** en aquest mode (és només una demo estàtica).
+
+#### Opció B — Vercel (app sencera)
 
 ```bash
 vercel
